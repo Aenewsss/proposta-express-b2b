@@ -1,16 +1,26 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
 
+@font-face {
+  font-family: 'Arame';
+  src: url('/fonts/Arame-Bold.ttf');
+}
+
 :root {
+  /* colors */
   --main-color: #FF00B7;
   --black-020: rgba(0, 0, 0, 0.2);
   --purple: #2F0924;
 
+  /* font sizes */
   --fs16: 16px;
   --fs26: 26px;
   --fs24: 24px;
   --fs28: 28px;
   --fs40: 40px;
   --fs64: 64px;
+
+  /* border radius */
+  --br25: 25px;
 }
 
 * {
@@ -35,4 +45,62 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+img {
+  position: unset !important;
+  height: unset !important;
+  top: unset !important;
+  bottom: unset !important;
+  left: unset !important;
+  right: unset !important;
+}
+
+.ff-arame {
+  font-family: 'Arame';
+}
+
+.fs-16 {
+  font-size: var(--fs16);
+}
+
+.fs-24 {
+  font-size: var(--fs24);
+}
+
+.fs-26 {
+  font-size: var(--fs26);
+}
+
+.fs-28 {
+  font-size: var(--fs28);
+}
+
+.fs-40 {
+  font-size: var(--fs40);
+}
+
+.fs-64 {
+  font-size: var(--fs64);
+}
+
+.text-main {
+  color: var(--main-color);
+}
+
+.br-25 {
+  border-radius: 25px !important;
+}
+
+.btn-outline-main {
+  border: 1px solid var(--main-color);
+  transition: color .15s ease-in-out,
+              background-color .15s ease-in-out,
+              border-color .15s ease-in-out;
+}
+
+.btn-outline-main:hover {
+  border-color: var(--main-color);
+  color: white;
+  background-color: var(--main-color);
 }
