@@ -17,7 +17,7 @@
   --fs24: 24px;
   --fs28: 28px;
   --fs40: 40px;
-  --fs64: 64px;
+  --fs64: clamp(2em, 10vw, 64px);
 
   /* border radius */
   --br25: 25px;
@@ -95,12 +95,24 @@ img {
 .btn-outline-main {
   border: 1px solid var(--main-color);
   transition: color .15s ease-in-out,
-              background-color .15s ease-in-out,
-              border-color .15s ease-in-out;
+    background-color .15s ease-in-out,
+    border-color .15s ease-in-out;
 }
 
 .btn-outline-main:hover {
   border-color: var(--main-color);
   color: white;
   background-color: var(--main-color);
+}
+
+.buttons-news {
+  width: clamp(22em, 50vw, 580px);
+}
+
+.flow-card {
+  width: 332px;
+  height: 258px;
+  border-radius: 20px;
+  background: #FFF;
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.16), -4px -4px 4px 0px rgba(0, 0, 0, 0.04);
 }
