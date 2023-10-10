@@ -10,13 +10,13 @@ import { RoutesEnum } from "@components/enum/routes.enum";
 
 const BriefingFormCard = ({ stage }: { stage: string }) => {
 
-    const [buttonDisabled, setbuttonDisabled] = useState<boolean>(false);
+    const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
 
     function getForm() {
         switch (Number(stage)) {
-            case 1: return <FirstBriefingForm />
-            case 2: return <SecondBriefingForm />
-            case 3: return <ThirdBriefingForm />
+            case 1: return <FirstBriefingForm setButtonDisabled={setButtonDisabled}/>
+            case 2: return <SecondBriefingForm setButtonDisabled={setButtonDisabled}/>
+            case 3: return <ThirdBriefingForm setButtonDisabled={setButtonDisabled}/>
         }
     }
 
@@ -29,6 +29,14 @@ const BriefingFormCard = ({ stage }: { stage: string }) => {
         return RoutesEnum.FIRST_BRIEFING_STAGE
     }
 
+    function handlePageToGo(): RoutesEnum {
+        switch (Number(stage)) {
+            case 1: return RoutesEnum.SECOND_BRIEFING_STAGE
+            case 2: return RoutesEnum.THIRD_BRIEFING_STAGE
+        }
+        return RoutesEnum.HOME
+    }
+
     return (
         <>
             <div className="flow-card p-4 w-100">
@@ -36,7 +44,7 @@ const BriefingFormCard = ({ stage }: { stage: string }) => {
             </div>
             <div className="d-flex justify-content-between">
                 <BackButton pageToBack={handlePageToBack()}/>
-                <ContinueButton buttonDisabled={buttonDisabled} />
+                <ContinueButton pageToGo={handlePageToGo()} buttonDisabled={buttonDisabled} />
             </div>
         </>
     );

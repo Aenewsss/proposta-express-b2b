@@ -1,4 +1,5 @@
-const FirstBriefingForm = () => {
+const FirstBriefingForm = ({ setButtonDisabled }: { setButtonDisabled: any }) => {
+
     return (
         <form className="p-2">
             <div className="mb-3 d-flex flex-column gap-2">
