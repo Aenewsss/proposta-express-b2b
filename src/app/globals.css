@@ -147,3 +147,7 @@ img {
 .fill-white {
   fill: white;
 }
+
+.text-copied{
+  right: -120px;
+}

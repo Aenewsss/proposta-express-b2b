@@ -1,22 +1,33 @@
 'use client'
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BackButton from "./Buttons/BackButton";
 import ContinueButton from "./Buttons/ContinueButton";
 import FirstBriefingForm from "./Forms/FirstBriefingForm";
 import SecondBriefingForm from "./Forms/SecondBriefingForm";
 import ThirdBriefingForm from "./Forms/ThirdBriefingForm";
 import { RoutesEnum } from "@components/enum/routes.enum";
+import { IStore } from "@components/store/types";
+import { useSelector } from "react-redux"
+import FinishButton from "./Buttons/FinishButton";
 
 const BriefingFormCard = ({ stage }: { stage: string }) => {
 
-    const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
+    const { brandColor, customerName } = useSelector((store: IStore) => store.briefing)
+
+    const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
+
+    useEffect(() => {
+        if (brandColor) setButtonDisabled(false)
+        else if (customerName) setButtonDisabled(false)
+        else setButtonDisabled(true)
+    }, [brandColor, customerName]);
 
     function getForm() {
         switch (Number(stage)) {
-            case 1: return <FirstBriefingForm setButtonDisabled={setButtonDisabled}/>
-            case 2: return <SecondBriefingForm setButtonDisabled={setButtonDisabled}/>
-            case 3: return <ThirdBriefingForm setButtonDisabled={setButtonDisabled}/>
+            case 1: return <FirstBriefingForm />
+            case 2: return <SecondBriefingForm />
+            case 3: return <ThirdBriefingForm />
         }
     }
 
@@ -33,6 +44,7 @@ const BriefingFormCard = ({ stage }: { stage: string }) => {
         switch (Number(stage)) {
             case 1: return RoutesEnum.SECOND_BRIEFING_STAGE
             case 2: return RoutesEnum.THIRD_BRIEFING_STAGE
+            case 3: return RoutesEnum.HOME
         }
         return RoutesEnum.HOME
     }
@@ -42,10 +54,16 @@ const BriefingFormCard = ({ stage }: { stage: string }) => {
             <div className="flow-card p-4 w-100">
                 {getForm()}
             </div>
-            <div className="d-flex justify-content-between">
-                <BackButton pageToBack={handlePageToBack()}/>
-                <ContinueButton pageToGo={handlePageToGo()} buttonDisabled={buttonDisabled} />
-            </div>
+            {
+                Number(stage) != 3 ?
+                    <div className="d-flex justify-content-between">
+                        <BackButton pageToBack={handlePageToBack()} />
+                        <ContinueButton pageToGo={handlePageToGo()} buttonDisabled={buttonDisabled} />
+                    </div>
+                    : <div className="d-flex justify-content-end">
+                    <FinishButton pageToGo={handlePageToGo()} />
+                    </div> 
+            }
         </>
     );
 }
