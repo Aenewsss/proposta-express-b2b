@@ -8,6 +8,7 @@
 :root {
   /* colors */
   --main-color: #FF00B7;
+  --main-060: rgba(255, 0, 183, 0.8);
   --black-020: rgba(0, 0, 0, 0.2);
   --purple: #2F0924;
 
@@ -92,6 +93,16 @@ img {
   border-radius: 25px !important;
 }
 
+.btn-main{
+  background-color: var(--main-color) !important;
+  color: white;
+}
+
+.btn-main:hover{
+  background-color: var(--main-060) !important;
+  color: white !important;
+}
+
 .btn-outline-main {
   border: 1px solid var(--main-color);
   transition: color .15s ease-in-out,
@@ -115,4 +126,19 @@ img {
   border-radius: 20px;
   background: #FFF;
   box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.16), -4px -4px 4px 0px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.fill-main {
+  fill: var(--main-color) !important;
+}
+
+.fill-black-020 {
+  fill: var(--black-020) !important;
+}
+
+.fill-white {
+  fill: white;
 }

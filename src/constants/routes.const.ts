@@ -1,4 +1,8 @@
 export const routes = {
-    briefing: "/briefing",
-    briefing_first_stage: "/briefing/1"
+    home: "/",
+    briefing: {
+        first_stage: "/briefing/1",
+        second_stage: "/briefing/2",
+        third_stage: "/briefing/3",
+    }
 }

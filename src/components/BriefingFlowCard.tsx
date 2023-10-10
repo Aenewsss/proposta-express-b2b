@@ -1,20 +1,20 @@
-const BriefingFlowCard = () => {
+import FirstCiclesFlow from "./CirclesFlow/First";
+import SecondCiclesFlow from "./CirclesFlow/Second";
+import ThirdCiclesFlow from "./CirclesFlow/Third";
+
+function BriefingFlowCard({ stage }: { stage: string }) {
+
+    function getCirclesFlow() {
+        switch (Number(stage)) {
+            case 1: return <FirstCiclesFlow />
+            case 2: return <SecondCiclesFlow />
+            case 3: return <ThirdCiclesFlow />
+        }
+    }
+
     return (
-        <div className="flow-card">
-            <div className="d-flex gap-4">
-                <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="20" cy="20" r="20" fill="pink" />
-                    <circle cx="20" cy="20" r="10" fill="gray" />
-                </svg>
-                <h3 className="ff-arame fs-24">O Cliente</h3>
-            </div>
-            <div className="d-flex gap-4">
-                <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="20" cy="20" r="20" fill="pink" />
-                    <circle cx="20" cy="20" r="10" fill="gray" />
-                </svg>
-                <h3 className="ff-arame fs-24">A Marca</h3>
-            </div>
+        <div className="flow-card p-4">
+            {getCirclesFlow()}
         </div>
     );
 }
