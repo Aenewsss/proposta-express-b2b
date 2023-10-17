@@ -9,7 +9,7 @@ const briefingSlice = createSlice({
             state.customerName = action.payload
 
             const encodedCustomerName = encodeURIComponent(action.payload)
-            state.customerLink = `http://localhost:3000?customerName=${encodedCustomerName}`
+            state.customerLink = `https://propostaexpressb2c.vercel.app?customerName=${encodedCustomerName}`
         },
         changeBrandColor(state, action) {
             state.brandColor = action.payload
@@ -17,7 +17,7 @@ const briefingSlice = createSlice({
             const encodedCustomerName = encodeURIComponent(state.customerName)
             const encodedBrandColor = encodeURIComponent(action.payload)
 
-            state.customerLink = `http://localhost:3000?customerName=${encodedCustomerName}&color=${encodedBrandColor}`
+            state.customerLink = `https://propostaexpressb2c.vercel.app?customerName=${encodedCustomerName}&color=${encodedBrandColor}`
         },
     }
 })
